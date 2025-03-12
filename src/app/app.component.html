@@ -1,3 +1,72 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<ion-header>
+  <ion-toolbar color="blue">
+	<ion-title >Application Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="savePreferences()">
+
+	<ion-item>
+  	<ion-label>Option 1</ion-label>
+  	<ion-toggle slot="end" [(ngModel)]="currentPreference.option1" name="option1"
+    	(ionChange)="savePreferences()"></ion-toggle>
+	</ion-item>
+
+	<ion-item>
+  	<ion-label>Option 2</ion-label>
+  	<ion-toggle slot="end" [(ngModel)]="currentPreference.option2" name="option2"
+    	(ionChange)="savePreferences()"></ion-toggle>
+	</ion-item>
+
+	<ion-item>
+  	<ion-label>Option 3</ion-label>
+  	<ion-toggle slot="end" [(ngModel)]="currentPreference.option3" name="option3"
+    	(ionChange)="savePreferences()"></ion-toggle>
+	</ion-item>
+
+	<ion-item>
+  	<ion-label>Range Value: {{ currentPreference.rangeValue }}</ion-label>
+  	<ion-range min="0" max="100" [(ngModel)]="currentPreference.rangeValue" name="rangeValue"
+    	(ionChange)="savePreferences()">
+  	</ion-range>
+	</ion-item>
+
+
+	<ion-list-header>Checkboxes</ion-list-header>
+	<ion-item>
+  	<ion-label>Checkbox 1</ion-label>
+  	<ion-checkbox slot="start" [(ngModel)]="currentPreference.checkbox1" name="checkbox1"
+    	(ionChange)="savePreferences()"></ion-checkbox>
+	</ion-item>
+	<ion-item>
+  	<ion-label>Checkbox 2</ion-label>
+  	<ion-checkbox slot="start" [(ngModel)]="currentPreference.checkbox2" name="checkbox2"
+    	(ionChange)="savePreferences()"></ion-checkbox>
+	</ion-item>
+	<ion-item>
+  	<ion-label>Checkbox 3</ion-label>
+  	<ion-checkbox slot="start" [(ngModel)]="currentPreference.checkbox3" name="checkbox3"
+    	(ionChange)="savePreferences()"></ion-checkbox>
+	</ion-item>
+
+	<ion-list-header>Radio Options</ion-list-header>
+	<ion-radio-group [(ngModel)]="currentPreference.radioValue" name="radioValue" (ionChange)="savePreferences()">
+  	<ion-item>
+    	<ion-label>Radio Option 1</ion-label>
+    	<ion-radio slot="start" value="option1"></ion-radio>
+  	</ion-item>
+  	<ion-item>
+    	<ion-label>Radio Option 2</ion-label>
+    	<ion-radio slot="start" value="option2"></ion-radio>
+  	</ion-item>
+
+	</ion-radio-group>
+
+
+	<ion-button color="medium" expand="block" (click)="resetPreferences()">
+  	RESET ALL SETTINGS
+	</ion-button>
+
+  </form>
+</ion-content>
